@@ -89,7 +89,7 @@
     <Compile Include="WriterCredit.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeadDog\DeadDog.csproj">
+    <ProjectReference Include="DeadDog\DeadDog.csproj">
       <Project>{675AB5E0-4637-4E6C-8D38-AA7BB135B5CE}</Project>
       <Name>DeadDog</Name>
     </ProjectReference>
