@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D454992-158C-423C-A2B8-137E6E00119D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeadDog.Movies</RootNamespace>
+    <AssemblyName>DeadDog.Movies</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\DeadDog.Movies.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActorTypes.cs" />
+    <Compile Include="CreditTypes.cs" />
+    <Compile Include="DirectorCredit.cs" />
+    <Compile Include="Genre.cs" />
+    <Compile Include="GenreCollection.cs" />
+    <Compile Include="GenreSet.cs" />
+    <Compile Include="IMDB\DataParser.cs" />
+    <Compile Include="IMDB\IMDBBuffer.cs" />
+    <Compile Include="IMDB\MatchType.cs" />
+    <Compile Include="IMDB\MediaType.cs" />
+    <Compile Include="IMDB\Pages\CreditsPage.cs" />
+    <Compile Include="IMDB\Pages\EpisodeInfo.cs" />
+    <Compile Include="IMDB\Pages\ExtraInfoPage.cs" />
+    <Compile Include="IMDB\Pages\IMDBPage.cs" />
+    <Compile Include="IMDB\Pages\InfoPage.cs" />
+    <Compile Include="IMDB\Pages\MainPage.cs" />
+    <Compile Include="IMDB\Pages\MovieMainPage.cs" />
+    <Compile Include="IMDB\Pages\SearchTitlePage.cs" />
+    <Compile Include="IMDB\Pages\TagPage.cs" />
+    <Compile Include="IMDB\Pages\TVEpisodeMainPage.cs" />
+    <Compile Include="IMDB\Pages\TVSeriesEpisodesPage.cs" />
+    <Compile Include="IMDB\Pages\TVSeriesMainPage.cs" />
+    <Compile Include="IMDB\Pages\TVSeriesSeasonsPage.cs" />
+    <Compile Include="IMDB\SearchResult.cs" />
+    <Compile Include="IMDB\SearchResultExtension.cs" />
+    <Compile Include="IO\EncodingBytes.cs" />
+    <Compile Include="IO\FileVersions.cs" />
+    <Compile Include="IO\Frame.cs" />
+    <Compile Include="IO\FrameIdentifier.cs" />
+    <Compile Include="IO\FrameIdentifierExtension.cs" />
+    <Compile Include="IO\FrameScanner.cs" />
+    <Compile Include="IO\FrameTypes.cs" />
+    <Compile Include="IO\MovieReader.cs" />
+    <Compile Include="IO\MovieWriter.cs" />
+    <Compile Include="MovieInfo.cs" />
+    <Compile Include="MovieId.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="PersonCollection.cs" />
+    <Compile Include="PersonCredit.cs" />
+    <Compile Include="ProducerCredit.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="WriterCredit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeadDog\DeadDog.csproj">
+      <Project>{675AB5E0-4637-4E6C-8D38-AA7BB135B5CE}</Project>
+      <Name>DeadDog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
