@@ -29,14 +29,14 @@ namespace DeadDog.Movies.IMDB
             while (input.Contains("<td class=\"nm\">"))
             {
                 input = input.CutToFirst("<td class=\"nm\">", CutDirection.Left, true);
-                string idString = input.CutToFirst("</", CutDirection.Right, true);
-                idString = idString.CutToSection("\"/name/nm", "/\"", true);
+                string idString = input.CutToFirst("<a href=\"", CutDirection.Right, true);
+                idString = idString.CutToSection("/name/", "/", true);
                 int id = int.Parse(idString);
 
-                string name = input.CutToFirst("</", CutDirection.Right, true);
-                name = name.CutToLast('>', CutDirection.Left, true);
+                string name = input.CutToFirst("title=\"", CutDirection.Right, true);
+                name = name.CutToLast("<span class=\"itemprop\" itemprop=\"name\">", CutDirection.Left, true);
 
-                input = input.CutToFirst("<td class=\"char\">", CutDirection.Left, true);
+                input = input.CutToFirst("<a href=\"/character", CutDirection.Left, true);
                 string role = input.CutToFirst("</", CutDirection.Right, true);
                 if (role.Contains('>'))
                     role = role.CutToLast('>', CutDirection.Left, true);
@@ -62,8 +62,8 @@ namespace DeadDog.Movies.IMDB
             while (input.Contains("<a href=\"/name/nm"))
             {
                 input = input.CutToFirst("<a href=\"/name/nm", CutDirection.Left, true);
-                string idString = input.CutToFirst("/\"", CutDirection.Right, true);
-                string name = input.CutToSection("/\">", "</a>", true);
+                string idString = input.CutToFirst("/", CutDirection.Right, true);
+                string name = input.CutToSection("\" >", "</a>", true);
                 int id = int.Parse(idString);
                 Person personParser = collection.GetPerson(id, decodeHTML(name));
                 persons.Add(new DirectorCredit(personParser));
@@ -84,8 +84,8 @@ namespace DeadDog.Movies.IMDB
             while (input.Contains("<a href=\"/name/nm"))
             {
                 input = input.CutToFirst("<a href=\"/name/nm", CutDirection.Left, true);
-                string idString = input.CutToFirst("/\"", CutDirection.Right, true);
-                string name = input.CutToSection("/\">", "</a>", true);
+                string idString = input.CutToFirst("/", CutDirection.Right, true);
+                string name = input.CutToSection("/\" >", "</a>", true);
                 int id = int.Parse(idString);
                 Person personParser = collection.GetPerson(id, decodeHTML(name));
                 persons.Add(new ProducerCredit(personParser));
@@ -106,8 +106,8 @@ namespace DeadDog.Movies.IMDB
             while (input.Contains("<a href=\"/name/nm"))
             {
                 input = input.CutToFirst("<a href=\"/name/nm", CutDirection.Left, true);
-                string idString = input.CutToFirst("/\"", CutDirection.Right, true);
-                string name = input.CutToSection("/\">", "</a>", true);
+                string idString = input.CutToFirst("/", CutDirection.Right, true);
+                string name = input.CutToSection("/\" >", "</a>", true);
                 int id = int.Parse(idString);
                 Person personParser = collection.GetPerson(id, decodeHTML(name));
                 persons.Add(new WriterCredit(personParser));

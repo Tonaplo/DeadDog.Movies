@@ -145,7 +145,7 @@ namespace DeadDog.Movies.IMDB
         private bool parseTagline(string input, out string value)
         {
             input = input.CutToFirst("<h4 class=\"inline\">Taglines:</h4>", CutDirection.Left, true);
-            input = input.CutToFirst("</div>", CutDirection.Right, true);
+            input = input.CutToFirst("<span class=\"see-more inline\">", CutDirection.Right, true);
             if (input.Contains("<span"))
                 input = input.CutToFirst("<span", CutDirection.Right, true);
             //parser = parser.CutToTag("p", true);
