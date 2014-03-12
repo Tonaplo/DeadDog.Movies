@@ -129,13 +129,13 @@ namespace DeadDog.Movies.IMDB
         }
         private bool parseMetacriticRating(string input, out Rating value)
         {
-            input = input.CutToFirst("<div class=\"star-box-details\">", CutDirection.Left, true);
-            if (!input.Contains("<a href=\"criticreviews\">"))
+            input = input.CutToFirst("Metascore:", CutDirection.Left, true);
+            if (!input.Contains("<a href=\"criticreviews"))
             {
                 value = Rating.Empty;
                 return false;
             }
-            input = input.CutToSection("<a href=\"criticreviews\">", "/", true);
+            input = input.CutToSection("<a href=\"criticreviews?ref_=tt_ov_rt\" title=\"", "review excerpts provided by Metacritic.com", true);
             byte b = byte.Parse(input.ToString());
 
             value = new Rating("Metacritic", true, 0, 100, b);
