@@ -119,7 +119,7 @@ namespace DeadDog.Movies.IMDB
 
         private bool parseIMDBRating(string input, out Rating value)
         {
-            input = input.CutToFirst("<div class=\"star-box-details\">", CutDirection.Left, true);
+            input = input.CutToFirst("<div class=\"star-box-details\"", CutDirection.Left, true);
             input = input.CutToSection("<span itemprop=\"ratingValue\">", "</span>", true);
             float r = float.Parse(input.Replace('.', ',').ToString());
             byte b = (byte)(r * 10);
