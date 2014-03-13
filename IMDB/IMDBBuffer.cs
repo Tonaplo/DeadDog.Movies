@@ -100,8 +100,8 @@ namespace DeadDog.Movies.IMDB
             MovieId id;
             MovieId.TryParse(response.Address, out id);
 
-            bool istags = html.Contains("<div id=\"tn15\" class=\"taglines\">");
-            bool iscredits = html.Contains("<div id=\"tn15\" class=\"fullcredits\">");
+            bool istags = html.Contains("<div id=\"taglines_content\" class=\"header\">");
+            bool iscredits = html.Contains("<div id=\"fullcredits_content\" class=\"header\">");
             bool seasons = response.Address.EndsWith("/episodes/_ajax");
             bool episodes = response.Address.Contains("/episodes/_ajax?season=");
 
