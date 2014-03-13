@@ -18,10 +18,10 @@ namespace DeadDog.Movies.IMDB
 
         private Role[] parseCast(string input, PersonCollection collection)
         {
-            if (!input.Contains("<table class=\"cast\">"))
+            if (!input.Contains("<table class=\"cast_list\">"))
                 return new Role[0];
 
-            input = input.CutToFirst("<table class=\"cast\">", CutDirection.Left, false);
+            input = input.CutToFirst("<table class=\"cast_list\">", CutDirection.Left, false);
             input = input.CutToFirst("</table>", CutDirection.Right, false);
 
             List<Role> persons = new List<Role>();
@@ -96,10 +96,10 @@ namespace DeadDog.Movies.IMDB
         }
         private WriterCredit[] parseWriters(string input, PersonCollection collection)
         {
-            if (!input.Contains("Writing credits"))
+            if (!input.Contains("Writing Credits"))
                 return new WriterCredit[0];
 
-            input = input.CutToFirst("Writing credits", CutDirection.Left, false);
+            input = input.CutToFirst("Writing Credits", CutDirection.Left, false);
             input = input.CutToFirst("</table>", CutDirection.Right, false);
 
             List<WriterCredit> persons = new List<WriterCredit>();
