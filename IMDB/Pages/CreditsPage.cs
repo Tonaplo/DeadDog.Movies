@@ -26,15 +26,15 @@ namespace DeadDog.Movies.IMDB
 
             List<Role> persons = new List<Role>();
 
-            while (input.Contains("<td class=\"nm\">"))
+            while (input.Contains("<a href=\"/name/nm"))
             {
-                input = input.CutToFirst("<td class=\"nm\">", CutDirection.Left, true);
-                string idString = input.CutToFirst("<a href=\"", CutDirection.Right, true);
-                idString = idString.CutToSection("/name/", "/", true);
+                input = input.CutToFirst("<a href=\"/name", CutDirection.Left, true);
+                string idString = input.CutToFirst(">", CutDirection.Right, true);
+                idString = idString.CutToSection("/nm", "/", true);
                 int id = int.Parse(idString);
 
-                string name = input.CutToFirst("title=\"", CutDirection.Right, true);
-                name = name.CutToLast("<span class=\"itemprop\" itemprop=\"name\">", CutDirection.Left, true);
+                string name = input.CutToFirst("</span>", CutDirection.Right, true);
+                name = name.CutToFirst("<span class=\"itemprop\" itemprop=\"name\">", CutDirection.Left, true);
 
                 input = input.CutToFirst("<a href=\"/character", CutDirection.Left, true);
                 string role = input.CutToFirst("</", CutDirection.Right, true);
@@ -47,6 +47,7 @@ namespace DeadDog.Movies.IMDB
                 Person personParser = collection.GetPerson(id, decodeHTML(name));
                 persons.Add(new Role(personParser, decodeHTML(role), ActorTypes.ActorOther));
             }
+
             return persons.ToArray();
         }
         private DirectorCredit[] parseDirectors(string input, PersonCollection collection)
